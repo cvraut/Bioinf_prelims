@@ -1,0 +1,10 @@
+{
+  "[tex]": {
+    "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "wordWrapColumn"
+  },
+  "[latex]": {
+    "diffEditor.wordWrap": "on",
+    "editor.wordWrap": "wordWrapColumn"
+  }
+}
