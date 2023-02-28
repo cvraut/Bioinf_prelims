@@ -1,9 +1,14 @@
 \documentclass[11pt]{article}
 
 % use the free version of the Arial font
-\usepackage[scaled]{uarial}
-\renewcommand*\familydefault{\sfdefault} 
-\usepackage[T1]{fontenc}
+% \usepackage[scaled]{uarial}
+% \renewcommand*\familydefault{\sfdefault} 
+% \usepackage[T1]{fontenc}
+% so installing arial gives problems for wsl running texlive
+% switching over to just using helvetica to get around that issue
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+
 
 % set margins to be 0.5 in
 \usepackage[legalpaper, portrait, margin=0.5in]{geometry}
@@ -20,6 +25,9 @@
 
 % indent 1st paragraph
 \usepackage{indentfirst}
+
+% make references clickable
+\usepackage{hyperref}
 
 \begin{document}
 
