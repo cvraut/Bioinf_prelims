@@ -17,3 +17,5 @@ Mike Boenhke: statistical genetics and the METSIM study
 Ryan Mills: sequencing data and human genetic variation
 Stephen CJ Parker: genomics and type 2 diabetes
 Maureen Sartor: NGS genetic data
+
+update sent email following this format
