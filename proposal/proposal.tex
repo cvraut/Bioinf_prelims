@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+% use the free version of the Arial font
+\usepackage[scaled]{uarial}
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+% so installing arial gives problems for wsl running texlive
+% switching over to just using helvetica to get around that issue
+% \renewcommand{\rmdefault}{phv} % Arial
+% \renewcommand{\sfdefault}{phv} % Arial
+
+
+% set margins to be 0.5 in
+\usepackage[legalpaper, portrait, margin=0.5in]{geometry}
+
+% set all font sizes in this document to be size 11pt
+\renewcommand{\tiny}{\normalsize}
+\renewcommand{\footnotesize}{\normalsize}
+\renewcommand{\small}{\normalsize}
+\renewcommand{\large}{\normalsize}
+\renewcommand{\Large}{\normalsize}
+\renewcommand{\LARGE}{\normalsize}
+\renewcommand{\huge}{\normalsize}
+\renewcommand{\Huge}{\normalsize}
+
+% indent 1st paragraph
+\usepackage{indentfirst}
+
+% make references clickable
+\usepackage{hyperref}
+
+\begin{document}
+
+\noindent
+\textbf{Name:} Chinmay Raut \textbf{Dissertation Advisor:} Elizabeth Speliotes
+
+\noindent
+\textbf{Relevant Faculty: } Mike Boehnke, Ryan Mills, Stephen CJ Parker, Maureen Sartor
+
+\section*{Preliminary Exam (Specific Aims)}
+
+Metabolic syndrome (MetS) is a combination of 5 health risk factors, including abdominal obesity, high blood pressure, high triglycerides, low high-density lipoprotein (HDL) cholesterol, and high fasting blood sugar, that together increase the risk for cardiovascular disease, type 2 diabetes, stroke, and other chronic conditions \cite{pmid29480368}. MetS diagnosis is based on thresholds for these 5 quantitative traits, and individuals must surpass the thresholds on 3/5 of these traits for diagnosis making this a complex disease to study. Up to 1 in 3 Americans currently satisfy the MetS conditions making it a significant public health challenge \cite{pmid29480368}. The underlying mechanisms of metabolic syndrome are not fully understood but are thought to involve a genetic component with MetS having an estimated heritability of about 20-30\% \cite{Graziano2019}. There is a need for further research to determine the underlying causes of MetS and to develop effective strategies for prevention and treatment.
+
+Previous studies have identified hundreds of associations between common genetic variants and MetS using Genome-Wide Association Studies (GWAS) on databases of up to 300,000 individuals \cite{pmid31589552}. However, little is known about the effects of rare variants on MetS, and no large-scale ($>$100,000 individuals) rare-variant associations have been conducted on MetS \cite{Lee2018}. Rare genetic variants (minor allele frequency $<$0.05) are worth studying for three reasons: they make up most of the sites of variation across the genome \cite{pmid34662886}, they are predicted to result in significant phenotypic changes if they reside in protein-coding regions \cite{pmid34662886}, and studying effects in protein-coding regions also provides a direct route for future functional studies and therapeutic targets \cite{doi:10.1056/NEJMoa2117872}. With the integration of Next-Generation Sequencing and longer read technology, genetic repositories like the UK Biobank (UKBB) recently released their Whole Exome Sequencing  (WES) data (26 million variants across 450,000+ individuals) resulting in high-quality data on low-frequency genetic variants \cite{pmid34662886}. Currently, studies on rare variants in GWAS are limited by power due to low sample counts of individuals within a selected rare variant. A series of approaches have been developed to combat these limitations including the construction of the optimal Sequence Kernel Association Test (SKAT-O) \cite{pmid22863193} which combines a set of rare variants together to increase the power of the association test. When the SKAT-O test is paired with a variant annotator like the WGS Annotator (WGSA) \cite{pmid26395054} this results in the direct implication of genes to an outcome.
+
+To understand the role genetic variants have on MetS, we want to identify and study its associations with rare, protein-coding variations using data from Biobanks. Exonic variants have the potential to alter proteins which then directly affect MetS phenotypes. Therefore, studying protein-altering variants offers direct insight into the biological mechanisms of MetS. We hypothesize that using WGS and WES data from large Biobanks such as the UKBB, we can detect exonic variants resulting in protein-coding changes which affect MetS. This will establish a series of protein-altering variants that provide insight into factors of MetS either for improvements in genetic testing or follow-ups for functional studies to investigate the biological mechanisms underlying the associations.
+
+\subsection*{Aim 1: Determine Novel Gene-Based Associations with MetS.}
+
+\textbf{Aim 1a: Identify genes associated with components of disease.} To avoid the issue of identifying single risk factor associations, like hyperglycemia associations, we can focus on the 10 (5 choose 3) distinct trait combinations for disease qualification. Using support vectors we will quantify an individual's disease severity score against each of these 10 combinations. We then run gene-based analysis techniques such as the SKAT-O tests to identify associations between genes and each of these MetS components.
+
+\textbf{Aim 1b: Integrate discovered signals across components to study the holistic effect on disease.} After identifying significant genes across the 10 trait combinations, we will conduct enrichment analysis on the gene-based results from Aim 1a genes associated with multiple MetS profiles. We will also perform gene-based association tests against a joint severity score across the different trait combinations.
+
+Based on the rare exonic variants we expect to identify and implicate specific genes that associate with components of MetS. We expect to construct a network of how these genes affect MetS as a whole, and if certain genes share similarities in effect on MetS providing further insights into its genetic basis.
+
+\subsection*{Aim 2: Determine sequence-specific mechanisms of disease and progression.}
+
+\textbf{Aim 2a: Within a gene, identify loci of individual variants affecting MetS.} We will perform Leave One Variant Out (LOVO) studies on the effects of variants within an implicated gene to understand if the effects of the protein-altering variants are restricted to a specific region of the gene or not.
+
+\textbf{Aim 2b: Design CRISPR CAS9 KO guides based on exonic variants.} Based on the specific type of rare variants identified (frameshift, splicing, missense, etc…) we will design a CAS9 guide library surrounding those regions to study the functional effects of the identified variants in vitro.
+
+We expect to produce a series of specific genomic loci potentially responsible for changes in MetS along with a CAS9 library for future functional experiments. This provides a direct target for future studies regarding the effects of genetic modification on MetS.
+
+\
+
+By studying new next-generation sequencing data to understand the role of rare genetic variants on MetS, we expect to identify genes that affect MetS and also provide biological insight into how they relate to the components of the condition. This study would lay the groundwork for further functional tests to investigate the biology behind the genetics of MetS and provide a genetics-based informatory tool to understand how one's genome contributes to risks in MetS.
+
+
+
+\newpage
+
+\bibliography{proposal} 
+\bibliographystyle{ieeetr}
+
+\end{document}
