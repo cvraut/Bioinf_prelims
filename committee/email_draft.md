@@ -13,7 +13,8 @@ Let me know if you would be available to participate and would like to join.
 Thanks,
 Chinmay
 
-Mike Boenhke: statistical genetics and the METSIM study
+~~Mike Boenhke: statistical genetics and the METSIM study~~
+Margit Burmeister: genetics and human disease
 Ryan Mills: sequencing data and human genetic variation
 Stephen CJ Parker: genomics and type 2 diabetes
 Maureen Sartor: NGS genetic data
