@@ -6,5 +6,31 @@
   "[latex]": {
     "diffEditor.wordWrap": "on",
     "editor.wordWrap": "wordWrapColumn"
-  }
+  },
+  "cSpell.words": [
+    "Biobank",
+    "Biobanks",
+    "Bioinformatics",
+    "Boenhke",
+    "Burmeister",
+    "CETP",
+    "CRISPR",
+    "DUSP",
+    "Exome",
+    "Exonic",
+    "frameshift",
+    "GWAS",
+    "INFOPATH",
+    "LOVO",
+    "MANPATH",
+    "Margit",
+    "METSIM",
+    "missense",
+    "Speliotes",
+    "texlive",
+    "texmf",
+    "Transethnic",
+    "UKBB",
+    "WGSA"
+  ]
 }
