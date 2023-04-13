@@ -90,7 +90,7 @@ By studying new next-generation sequencing data to understand the role of rare g
 
 Metabolic syndrome (MetS) is a combination of 5 health risk factors, including abdominal obesity, high blood pressure, high triglycerides, low high-density lipoprotein (HDL) cholesterol, and high fasting blood sugar, that together increase the risk for cardiovascular disease, type 2 diabetes, stroke, and other chronic conditions. ~33\% of Americans currently satisfy the MetS conditions making it a significant public health challenge. The underlying causes or biological processes behind MetS are not fully understood but the disease is thought to have a genetic component with a heritability estimate of 20-30\%. 
 
-Genome-wide association studies (GWAS) are a powerful approach used in genetics research to identify genetic variations associated with complex diseases or traits. In a GWAS, researchers analyze the genetic information of large groups of individuals to identify genetic markers, or locations along the genome, that are associated with the disease or trait of interest. By comparing the frequency of these genetic markers between individuals with the disease or trait and those without, researchers can identify specific genetic variations that may relate to the development of the disease or trait. GWAS for MetS have identified a couple of promising candidate genes such as APOB, LPL, CETP, APOA5, GCKR, and ZNF259 to be associated with MetS incidence in large European populations (>300k individuals). These genes implicate lipid metabolism to be a major contributor of MetS. However, since 2 of the defining characteristics for MetS are defined by lipids (HDL and triglycerides) and these genes have a lesser impact on the other 3 characteristics of the disease, it suggests that these genes alone do not explain the entire genetic effect on MetS.
+Genome-wide association studies (GWAS) are a powerful approach used in genetics research to identify genetic variations associated with complex diseases or traits. In a GWAS, researchers analyze the genetic information of large groups of individuals to identify genetic markers, or locations along the genome, that are associated with the disease or trait of interest. By comparing the frequency of these genetic markers between individuals with the disease or trait and those without, researchers can identify specific genetic variations that may relate to the development of the disease or trait. GWAS for MetS have identified a couple of promising candidate genes such as APOB, LPL, CETP, APOA5, GCKR, and ZNF259 to be associated with MetS incidence in large European populations ($>$300k individuals). These genes implicate lipid metabolism to be a major contributor of MetS. However, since 2 of the defining characteristics for MetS are defined by lipids (HDL and triglycerides) and these genes have a lesser impact on the other 3 characteristics of the disease, it suggests that these genes alone do not explain the entire genetic effect on MetS.
 
 \begin{wrapfigure}{r}{0.6\textwidth}
   \begin{center}
@@ -149,7 +149,9 @@ This should produce a list of novel genes significant for each of the 5 characte
 
 The low power for detecting rare-variant associations is a major concern, and it is possible that no genes pass the EWS threshold or the Bonferroni corrected conditional threshold for a given MetS trait.
 
-One reason could arise could be due to a low proportion of causal variants within the variant lists for a given gene. It has been demonstrated that the rare-variant aggregation tests are extremely sensitive to proportion of causal variants within the variant lists for each gene. If a majority of variants within a variant list are not causal then the test will become underpowered. One way to address this concern would be to refine our lists of variants by subdividing variant lists. We can subdivide the variant lists by minor allele frequency category if we believe that only variants within a specific range of allele frequency are more predisposed to be causal. We can also subdivide the variant lists via a sliding window approach if we believe the causal variants to be unique to a specific region of the gene.
+One reason could arise could be due to a low proportion of causal variants within the variant lists for a given gene. It has been demonstrated that the rare-variant aggregation tests are extremely sensitive to proportion of causal variants within the variant lists for each gene. If a majority of variants within a variant list are not causal then the test will become underpowered. 
+
+One way to address this concern would be to refine our lists of variants by subdividing variant lists. We can subdivide the variant lists by minor allele frequency category if we believe that only variants within a specific range of allele frequency are more predisposed to be causal. We can also subdivide the variant lists via a sliding window approach if we believe the causal variants to be unique to a specific region of the gene.
 
 \subsection*{Aim 1b: Integrate discovered signals across components to study the holistic effect on disease.} 
 
@@ -167,92 +169,85 @@ Where $ln(\frac{\pi_\text{MetS incidence}}{1-\pi_\text{MetS incidence}})$ is the
 
 We can then start to implicate genes to associate with MetS. First we can consider any EWS genes to associate with MetS. Then we can leverage our component-wise discovery of MetS genes to potentially implicate more genes. We can restrict our genes of consideration to the group of genes associated from 1a and pay a less severe multiple testing penalty by looking at those component-wise significant genes with bonferroni corrected p-value threshold. This would give us a list of genes that potentially associate with MetS either strongly through EWS or association through component and disease (Bonferroni correction).
 
-We can further validate this set of newly implicated MetS genes through the use of an independent external validation cohort. For the external validation cohort such as MGI we can construct the MetS phenotype. Since MGI is a hospital based cohort we would prefer to use MetS clinical diagnosis over blood biochemistry results; however, for patients with no history of disease we can default to MetS incidence constructed by blood test results and in patient visits. We will then fit an similar model to the above SKAT-O tests; however, since this is an independent cohort and we are only seeking validation on novel MetS hits we will not condition on the previous MetS results. We will only test the genes implicated by discovery cohort and we will define a gene association as replicating with a p $\le$ 0.05 in the MGI cohort. This will result in a list of genes that we more certain of associating with the MetS disease as a whole and not just study specific associations or false positives.
+We can further validate this set of newly implicated MetS genes through the use of an independent external validation cohort. For the external validation cohort such as MGI we can construct the MetS phenotype. Since MGI is a hospital based cohort we would prefer to use MetS clinical diagnosis over blood biochemistry results; however, for patients with no history of disease we can default to MetS incidence constructed by blood test results and in patient visits. We then conduct similar QC adjustments and annotation as was mentioned in the previous aim. However, we the additional QC criteria that a variant must be well imputed with an R2 imputation score of $\ge$ 0.8 similar to previous MGI studies. This is because the UKBB consists of exonic hardcalls or raw known sequences whereas MGI consists of imputed rare variants. We will then fit an similar model to the above SKAT-O tests; however, since this is an independent cohort and we are only seeking validation on novel MetS hits we will not condition on the previous MetS results. We will only test the genes implicated by discovery cohort and we will define a gene association as replicating with a p $\le$ 0.05 in the MGI cohort. This will result in a list of genes that we more certain of associating with the MetS disease as a whole and not just study specific associations or false positives.
 
-To identify MetS disease subtypes we can also  create a heatmap of genes against associated MetS features, then perform hierarchical clustering to identify genes that behave similarly across different traits of MetS. We can then conduct pathway analysis using tools like Depict to further offer biological insight or reasons why certain genes would implicate together. We can also identify if the different MetS gene clusters consist of individuals which are also similar via other phenotypes by looking at a Phenome Wide Association Study (PheWAS)
+To identify MetS disease subtypes we can also  create a heatmap of genes against associated MetS features, then perform hierarchical clustering to identify genes that behave similarly across different traits of MetS. We can further conduct pathway analysis using tools like Depict to further offer biological insight or reasons why certain genes would implicate together. We can also identify if the different MetS gene clusters consist of genes which are also similar via other phenotypes by studying the associations with adverse outcomes implicated with MetS such as cardiovascular disease or type 2 diabetes. Specifically we can pool together individuals with variants within a clustered set of genes and without and test if the incidence of adverse outcome differs to further understand how these novel genes relate to different aspects of MetS.
 
-Then we can construct the classical MetS phenotype according to the criteria listed in 1a. This will be a binary incidence variable, however. 
-
-Next, we can conduct a rare variant GWAS on our MetS variable both with and without conditioning on the previously reported MetS GWAS common variants.
-
-We will report any genes or variants implicated with the MetS phenotype conditional on the previously reported variants. Due to the binary nature of the MetS phenotype variable, we expect to implicate fewer genes during this process.
-
-However, since we have a short list of genes that implicate the individual attributes of MetS we do not need to pay a severe multiple-testing burden. We can also just focus on the MetS unconditional results for the genes implicated in 1a.
-
-Then we validate our MetS genes using an independent dataset such as MGI. The quality control pipeline follows similarly to 1a, however, the phenotypes we consider will be restricted to only MetS diagnosis. We will not condition on the previous variants and due to the nature that this is an independent dataset of individuals we will maintain significance at $p <= 0.05$. We will only test the genes implicated with MetS from UKBB, we will not conduct a GWAS.
-
-We can also study how the newly implicated variants relate to MetS risk through the construction of Genetic Risk Scores (GRS). Following the equation outlined below:
+We can also study how the newly implicated rare variants relate to MetS risk through the construction of Genetic Risk Scores (GRS). Following the equation outlined below:
 $$GRS = \sum_{i=1}^{C_n} \beta_{C_i}X_{C_i} + \sum_{j=1}^{R_n} \beta_{R_j}X_{R_j}$$
 Where $C_n$ is the number of common markers, $\beta_{C_i}$ is the effect size of the common variant extracted from GWAS catalog, $X_M$ is the dosage of marker $M$, and $R_n$ is the number of rare markers, and $\beta_{R_i}$ is the effect size of the rare variant from the SAIGE single variant intermediate results. Previous studies have identified that the effects of rare variants on GRS are relatively small due to the low frequency of rare variants within a population, but it may be worth considering due to the potential to better distinguish between the ultra-high risk (top 1\%) group and others. 
 
-We can look at other adverse outcomes implicated with MetS such as cardiovascular disease or type 2 diabetes and test to study if individuals with rare variants in MetS-implicated genes have different distributions of disease incidence compared to individuals without mutations in implicated genes. 
+Finally, we should have a list of genes whose rare variants are associated with MetS along with a more holistic understanding of how individual factors contribute to MetS disease and risk of adverse MetS related outcomes.
 
-Finally, we should have a list of genes whose rare variants are associated with MetS along with a more holistic understanding of how individual factors contribute to MetS disease and risk.
+\noindent \underbar{Potential Pitfalls \& Alternative Approaches:}
 
-One thing to note is that GWAS of dichotomous traits tend to be lower powered
+One thing to note is that GWAS of dichotomous traits tend to be lower powered and again we could fail to implicate any genes with MetS. Although we allow for the possibility that EWS might be difficult to achieve, it could be possible that none of the MetS component-wise significant genes replicate with Bonferroni correction in the discovery cohort.
+
+In this case the lack of association is actually not likely due to case-control imbalances since MetS has a very high prevalence of about 25\% across individuals in the UKBB. Other studies have constructed a MetS severity score using Z-scores so we could try using a quantitative measure of MetS instead of an incidence of disease measurement. 
+
+Another potential cause for concern is that the MGI replication cohort uses a different sequencing approach compared to the UKBB. Specifically MGI doesn't consist of rare exonic sequences and hardcalls, but instead imputed dosages from the TopMed imputation platform. This can result in far fewer variants included during the replication phase lower the statistical power of the tests. A solution to this dilemma was recently proposed by the TopMed consortium of dropping the QC threshold down to an R2 of $\ge$ 0.3. This is because the R2 threshold is not the imputation quality compared to hardcalls, but instead the imputation quality with reference to allele frequency of the variant. For most rare variants the allele frequency is poorly estimated due to the rare nature of the variant and the imputation accuracy can actually be much higher for lower R2 in the rare variant space.
 
 \subsection*{Aim 2: Determine sequence-specific mechanisms of disease and progression.}
 
-Using the implicated genes from Aim 1 we wish to construct work on functional follow-ups for in vitro experiments. It is known that we can study the effect of the removal of the entire gene using CRISPR-associated protein 9 (CAS9) knockouts however to further guide potential therapies we can try to isolate the gene-specific likely sequences or mutations causing the observed phenotype association.
-
 \subsection*{Aim 2a: Within a gene, identify loci of individual variants affecting MetS.} 
 
-For each implicated gene from 1, we will perform Leave One Variant Out (LOVO) studies on the effects of variants within that gene This involves fitting the gene-based test on multiple combinations of omitting a variant from a gene-based test. We expect to receive a plot that looks like Fig \ref{fig:f2} with the significance of the association test on the y and the position of the omitted variant on the x.
+\noindent \underbar{Rationale:}
 
-\begin{figure}[h]
-  \includegraphics[width=0.7\linewidth]{"images/fig2.png"} 
+Following the above aims we have implicated the associated genes to MetS via rare-variant associations and now we wish to construct a framework for functionally testing these implicated genes in cell assays to understand the cellular biology behind these associations. Before jumping directly into potentially expensive functional tests of the MetS implicated genes we want to first study whether implicated genes are holistically associated with MetS phenotypes or rather are there subsections of the implicated genes that associate better with MetS phenotypes. This will allow for better guided functional approaches and potentially strengthen true associations in vitro.
+
+\noindent \underbar{Approach:}
+
+For each implicated gene from 1, we will perform Leave One Variant Out (LOVO) studies on the effects of variants within that gene This involves fitting the gene-based test against MetS on multiple combinations of variant lists with each combination omitting a variant. We expect to receive a plot that looks like Fig \ref{fig:f2} with the significance of the association test on the y and the position of the omitted variant on the x. strongly associated single variants will appear as little peaks along the line whereas associated blocks will appear as triangles or trapezoids representing larger regions of greater functional importance of a gene.
+
+\begin{wrapfigure}{l}{0.62\textwidth}
+  \includegraphics[width=1.0\linewidth]{"images/fig2.png"} 
   \caption{\textbf{Leave One Variant Out plot} (from Du et al 2021). Vertical drops signify associated single variants. V's signify regions of associating rare variants}
   \label{fig:f2}
-\end{figure}
+\end{wrapfigure}
   
+We can then apply any peak-finding algorithm (like golden search or derivative approaches) to identify which variants and where along the gene resulted in large peaks of association signal change. This will help identify if the effects of the protein-altering variants are restricted to a specific region of the gene or not. We can then isolate specific regions of a gene and potential polypeptide sequences to study for follow-up analysis.
 
-We can then apply any peak-finding algorithm (like golden search or derivative approaches) to identify which variants resulted in large peaks of association signal change. This will help identify if the effects of the protein-altering variants are restricted to a specific region of the gene or not. we can then isolate specific regions of a gene and potential polypeptide sequences to study for follow-up analysis.
+To verify that we have identified specific causal locations within a gene we can construct a gene-based test using only our implicated causal locations and identifying if the association improves or gets worse. If we do identify a singular causal region we expect the gene-based association p-value to improve (become more significant). If the causal region of the gene cannot be well defined then we expect the gene-based association to perform worse. Based on the positions of the left-most and right-most variants we can produce an estimate of the endpoints for the important MetS loci within an associated gene.
 
-To verify that we have identified specific causal locations within a gene we can construct a gene-based test using only our implicated causal locations and identifying if the association improves or gets worse. If we do identify a singular causal region we expect the gene-based association p-value to improve. If the causal region of the gene cannot be well defined then we expect the gene-based association to perform worse.
+If the loci lies in the exons of a gene and results in a missense or loss-of-function mutation, we can even simulate the folded mutated protein using AlphaFold2 to assess hydrophobic and hydrophilic region changes across the proteins helping inform future functional studies for potential assays and tests to run with these results.
 
-We expect to have a list of genomic endpoints for each gene implicating the deleterious or important parts of a gene relating to MetS. If we cannot identify a single causal region then the endpoints should encapsulate the entire gene.
+We expect to have a list of genomic endpoints for each gene implicating the deleterious or important parts of a gene relating to MetS. 
+
+\noindent \underbar{Potential Pitfalls \& Alternative Approaches:}
+
+It is possible that after performing the LOVO studies on the genes that no loci across the genes appears to be enriched for MetS association. The LOVO studies produce flat bars or just a lone single peak. In that case, we cannot identify a single causal region. In that case we can include the multiple implicated endpoints for each peak or block. Otherwise we can just encapsulate the entire gene as entirely critical for rare variant association.
+
+Another limitation to this approach is that it assumes that signals associated with variants at a particular locus are due to that region and that region alone. It could be possible that cis or trans effects from other entities associate with the implicated loci, and those might not be detectable through exon sequencing. Functional validation in vitro would be required to followup on the implicated MetS within gene loci; however, we can verify that the implicated loci do not associate with other genetic data like DNA methylation markers instead or additional causes of misclassification.
 
 \subsection*{Aim 2b: Design CRISPR CAS9 KO guides based on exonic variants.} 
 
-If the variants lie in the exons of a gene and result in a missense or loss-of-function mutation, we can even simulate the folded mutated protein using AlphaFold2 to assess hydrophobic and hydrophilic region changes across the proteins helping inform future functional studies for potential assays and tests to run with these results.
+\noindent \underbar{Rationale:}
 
-There are a plethora of tools for single-guide RNA (sgRNA) design for gene knockout experiments such as CRISPOR or CHOPCHOP, and we can use them to generate a list of potential gene knockout guides for each implicated gene.
+Following 2a we have identified specific regions of interest with our MetS implicated genes. Current functional tests run cellular assays while attempting to remove large coding sections of genes to induce a complete gene knockout in which case the cell can no longer produce that gene on its own. However the concern of regions of a gene affecting the phenotype through mutation of the protein and not simply its absence are still valid. For example consider the case of the Id family of proteins which can affect a phenotype by forming heterodimers with proteins that were expected to homodimerize. Current CRISPR-associated Protien9 (CAS9) knockout tools such as CRISPOR or CHOPCHOP seek to use multiple single-guide RNA (sgRNA) all throughout the gene via a process known as multi-guide mutagenesis. This effectively chops up the gene at various different locations ideally resulting complete gene knockouts. From 2a we have identified specific susceptible MetS regions within a gene. We hypothesize that using a subset of sgRNA CAS9 guides focusing on loci of interest to instead of removing the entire gene, just remove the associated loci of the gene could prove useful for functional validation of these MetS genes and aid in future studies.
 
-Then for the genes from 2a of whom we were able to identify specific within gene sequences, we can further filter and assess the recommended guides to help build a more focused MetS gene knockout library.
+\noindent \underbar{Approach:}
 
-The benefit of this library compared to a standard gene knockout library is the added ability to conduct partial knockouts to study not only the effect of gene omission but a targeted region-specific mutation of a MetS-implicated gene.
+There are a plethora of tools for single-guide RNA (sgRNA) design for gene knockout experiments such as CRISPOR or CHOPCHOP, and we can start by using them to generate a list of potential gene knockout guides for each implicated gene. This will form the initial library for MetS functional KO guides.
 
-Finally, we expect to receive a set of sequences for each MetS-implicated gene that can directly be applied to a functional study of MetS for an in-vitro model.
+Then for the genes from 2a of whom we were able to identify specific within gene sequences, we can further filter and assess the recommended guides to help build a more focused MetS gene knockout library. We can use base positioning of the guides to make sure that they only delete the implicated loci for that gene. We can then verify using a tool like CRISPick to obtain an estimate for how efficacious these sets of guides would be at assuring on target knockouts for the selected gene. 
 
+For loci with low probabilities of on target knockout defined as having $<$ 80\% chance for on target efficiency we can default to the originally produced lists of guides and label those sets of guides as full gene knockouts instead of loci specific knockouts. The benefit of this library compared to a standard gene knockout library is the added ability to conduct partial knockouts to study not only the effect of gene omission but a targeted region-specific mutation of a MetS-implicated gene.
+
+At the end, we expect to receive a set of sequences for each MetS-implicated gene that can directly be applied to a functional study of MetS for an in-vitro model.
+
+\noindent \underbar{Potential Pitfalls \& Alternative Approaches:}
+
+This approach has plenty of limitations and makes fundamental assumptions about the CAS9 gene editing process which may not hold true in practice. This approach assumes that CAS9 cutting is precise, but experimentally the guides can perform cuts multiple base pairs away from the intended location which can lead to frameshift mutations resulting in behavior similar to a full gene knockout instead of a focused locus based knockout. Using a tool like CRISPick can help identify rapidly if a specific target set of guides will likely not be effective at producing the intended knockouts, but further in vitro validations should be conducted to ensure that the constructed MetS loci specific CAS9 guide library is effective.
+
+Furthermore, it may be possible that for a given locus no guides can be automatically constructed due to high amounts of genomic repeats or non-uniquely identifiable guide sequences. Usually these tools limit the sgRNA guides to 20 base-pairs; however, an alternative would be to generate longer potential guide sequences of up to 40 base-pairs instead. The longer guide sequences will be more costly to assemble but can help ensure sequence specificity.
 
 \subsection*{Potential Outcomes and Conclusions}
 
-We expect to have identified a few new genes implicated to MetS through exonic rare variants along with a suite of sgRNA guides for follow-up CAS9 KO functional experiments. 
+Across these aims we plan to use WES data from the UKBB and MGI to conduct rare-variant association tests to identify novel MetS implicating genes and provide a template for future functional studies. From aim 1a we will obtain a list of novel genes significant for each of the 5 characteristics of MetS based on results from rare variant associations. From aim 1b we will obtain a further refined list of genes whose rare variants are associated with MetS directly along with a more holistic understanding of how individual factors contribute to MetS disease and risk of adverse MetS related outcomes. From aim 2b we expect to have a list of genomic endpoints for each gene implicating the deleterious or important parts of a gene relating to MetS. Finally, from aim 2b we expect to receive a set of sequences for each MetS-implicated gene that can directly be applied to a functional study of MetS for an in-vitro model or assay for MetS.
 
-However, due to the feed-forward nature of the study in which current results depend on previous results, we could fail to implicate any genes with MetS from Aim 1. In the case this happens we can Meta-Analysze UKBB and MGI together omitting the validation in an independent dataset step. We can make use of newer techniques such as MetaSTAAR which allows for gene-based meta-analysis.
-
-Another limitation of the study is that the annotation of the variants greatly influences the gene-based results. If a variant is annotated to be loss-of-function, we assume that those types of variants have stronger effects compared to missense or synonymous variants. However, there may be regulatory functions in the body that can identify deleterious mutations and suppress gene expression of them negating their potential phenotypic effect. RefGene is a reputable resource however due to the many gaps in our understanding of biology its annotations may not be complete. If our implicated MetS genes are strange or don't validate with previous studies we might try different annotation methods for variants. A recent annotation method tool called FAVOR which makes use of more variant features might be able to address some of those weaknesses.
-
+Major limitations of this approach is that although the variants to be implicated are guaranteed to be exonic and lie within genes, these variants may not cause the phenotypic effects observed. They might tend to associate with other unobserved confounders for MetS. But regardless this approach will help understand the role that rare variants play on MetS while setting up future studies to better understand the biologly behind genetic associations of MetS.
 
 \newpage
-
-\section*{Background and Motivation}
-
-
-
-\section*{Significance of Research}
-
-\section*{Preliminary Data}
-
-\section*{Research Strategy}
-
-\subsection*{Rationale}
-
-\subsection*{Design \& Methods}
-
-\subsection*{Potential Pitfalls \& Alternative Approaches}
-
-\subsection*{Expected/Alternative outcomes}
 
 \bibliography{proposal} 
 \bibliographystyle{ieeetr}
