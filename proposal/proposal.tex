@@ -1,13 +1,13 @@
 \documentclass[11pt]{article}
 
 % use the free version of the Arial font
-\usepackage[scaled]{uarial}
-\renewcommand*\familydefault{\sfdefault} 
-\usepackage[T1]{fontenc}
+% \usepackage[scaled]{uarial}
+% \renewcommand*\familydefault{\sfdefault} 
+% \usepackage[T1]{fontenc}
 % so installing arial gives problems for wsl running texlive
 % switching over to just using helvetica to get around that issue
-% \renewcommand{\rmdefault}{phv} % Arial
-% \renewcommand{\sfdefault}{phv} % Arial
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
 
 % pandas tables
 \usepackage{booktabs}
@@ -33,6 +33,13 @@
 \renewcommand{\huge}{\normalsize}
 \renewcommand{\Huge}{\normalsize}
 
+
+% reduce vertical space between headings
+\usepackage[compact]{titlesec}
+\titlespacing*{\section}{0pt}{*2}{*0}
+\titlespacing*{\subsection}{0pt}{*1}{*1}
+\titlespacing*{\subsubsection}{0pt}{*1}{*1}
+
 % indent 1st paragraph
 \usepackage{indentfirst}
 
@@ -42,12 +49,14 @@
 \begin{document}
 
 \noindent
-\textbf{Name:} Chinmay Raut \textbf{Dissertation Advisor:} Elizabeth Speliotes
+\textbf{Preliminary Exam Proposal} \hfill \textbf{Name:} Chinmay Raut \textbf{Dissertation Advisor:} Elizabeth Speliotes
 
 \noindent
-\textbf{Relevant Faculty: } 
+\textbf{Committee: } Margit Burmeister, Ryan Mills, Stephen CJ Parker, Maureen Sartor
 
-\section*{Preliminary Exam (Specific Aims)}
+\section*{\centerline{Studying the Effects of Rare Variants in Metabolic Syndrome}}
+
+\section*{Specific Aims}
 
 Metabolic syndrome (MetS) is a combination of 5 health risk factors, including abdominal obesity, high blood pressure, high triglycerides, low high-density lipoprotein (HDL) cholesterol, and high fasting blood sugar, that together increase the risk for cardiovascular disease, type 2 diabetes, stroke, and other chronic conditions \cite{pmid29480368}. MetS diagnosis is based on thresholds for these 5 quantitative traits, and individuals must surpass the thresholds on 3/5 of these traits for diagnosis making this a complex disease to study. Up to 1 in 3 Americans currently satisfy the MetS conditions making it a significant public health challenge \cite{pmid29480368}. The underlying mechanisms of metabolic syndrome are not fully understood but are thought to involve a genetic component with MetS having an estimated heritability of about 20-30\% \cite{Graziano2019}. There is a need for further research to determine the underlying causes of MetS and to develop effective strategies for prevention and treatment.
 
@@ -197,6 +206,24 @@ Another limitation of the study is that the annotation of the variants greatly i
 
 
 \newpage
+
+\section*{Background and Motivation}
+
+
+
+\section*{Significance of Research}
+
+\section*{Preliminary Data}
+
+\section*{Research Strategy}
+
+\subsection*{Rationale}
+
+\subsection*{Design \& Methods}
+
+\subsection*{Potential Pitfalls \& Alternative Approaches}
+
+\subsection*{Expected/Alternative outcomes}
 
 \bibliography{proposal} 
 \bibliographystyle{ieeetr}
