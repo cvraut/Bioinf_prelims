@@ -1,3 +1,5 @@
+Title: Bioinformatics PhD Prelims Committe request - Chinmay
+---
 Hi Professor X,
 
 My name is Chinmay and I'm a Bioinformatics Phd Student currently working on completing their prelims.
